@@ -1,36 +1,36 @@
-/*1-1 µµ¼­¹øÈ£°¡ 1ÀÎ µµ¼­ÀÇ ÀÌ¸§*/
+/*1-1 ë„ì„œë²ˆí˜¸ê°€ 1ì¸ ë„ì„œì˜ ì´ë¦„*/
 	SELECT bookname FROM Book WHERE bookid=1;
-/*1-2 °¡°İÀÌ 20,000¿ø ÀÌ»óÀÎ µµ¼­ÀÇ ÀÌ¸§*/
+/*1-2 ê°€ê²©ì´ 20,000ì› ì´ìƒì¸ ë„ì„œì˜ ì´ë¦„*/
 	SELECT bookname FROM Book WHERE price >= 20000;
-/*1-3 ¹ÚÁö¼ºÀÇ ÃÑ ±¸¸Å¾×*/
+/*1-3 ë°•ì§€ì„±ì˜ ì´ êµ¬ë§¤ì•¡*/
 	SELECT SUM(saleprice) 
 	FROM Customer, Orders 
 	WHERE Customer.custid=Orders.custid 
-		AND Customer.name LIKE '¹ÚÁö¼º';
-/*1-4 ¹ÚÁö¼ºÀÌ ±¸¸ÅÇÑ µµ¼­ÀÇ ¼ö*/
+		AND Customer.name LIKE 'ë°•ì§€ì„±';
+/*1-4 ë°•ì§€ì„±ì´ êµ¬ë§¤í•œ ë„ì„œì˜ ìˆ˜*/
 	SELECT COUNT(*) FROM Customer, Orders 
 	WHERE Customer.custid=Orders.custid 
-         	AND Customer.name LIKE '¹ÚÁö¼º';
-/*1-5 ¹ÚÁö¼ºÀÌ ±¸¹èÇÑ µµÇãÀÇ ÃâÆÇ»ç ¼ö*/
+         	AND Customer.name LIKE 'ë°•ì§€ì„±';
+/*1-5 ë°•ì§€ì„±ì´ êµ¬ë°°í•œ ë„í—ˆì˜ ì¶œíŒì‚¬ ìˆ˜*/
 SELECT COUNT(DISTINCT publisher) 
 FROM Customer, Orders, Book 
 WHERE Customer.custid=Orders.custid AND Orders.bookid=Book.bookid
-	         AND Customer.name LIKE '¹ÚÁö¼º';
+	         AND Customer.name LIKE 'ë°•ì§€ì„±';
 
-/*1-6 ¹ÚÁö¼ºÀÌ ±¸¸ÅÇÑ µµ¼­ÀÇ ÀÌ¸§,°¡°İ,Á¤°¡¿Í ÆÇ¸Å°¡°İÀÇ Â÷ÀÌ*/
+/*1-6 ë°•ì§€ì„±ì´ êµ¬ë§¤í•œ ë„ì„œì˜ ì´ë¦„,ê°€ê²©,ì •ê°€ì™€ íŒë§¤ê°€ê²©ì˜ ì°¨ì´*/
 SELECT bookname, price, saleprice, price-saleprice
 FROM Customer, Orders, Book 
 WHERE Customer.custid=Orders.custid AND Orders.bookid=Book.bookid
-         	AND Customer.name LIKE '¹ÚÁö¼º';
+         	AND Customer.name LIKE 'ë°•ì§€ì„±';
             
-/*1-7 ¹ÚÁö¼ºÀÌ ±¸¸ÅÇÏÁö ¾ÊÀº µµ¼­ÀÇ ÀÌ¸§*/
+/*1-7 ë°•ì§€ì„±ì´ êµ¬ë§¤í•˜ì§€ ì•Šì€ ë„ì„œì˜ ì´ë¦„*/
 select bookname
 from book b1
 where not exists
       (select bookname 
        from customer, orders 
        where customer.custid=orders.custid and orders.bookid=b1.bookid
-            and customer.name like '¹ÚÁö¼º');
+            and customer.name like 'ë°•ì§€ì„±');
 		
 	
 /*ex1-5*/
@@ -38,14 +38,14 @@ select count(distinct publisher)
 from customer, orders,book
 where customer.custid=orders.custid 
     and orders.bookid=book.bookid 
-    and customer.name like '¹ÚÁö¼º';
+    and customer.name like 'ë°•ì§€ì„±';
     
 /*ex1-6*/
 select bookname,price,price-saleprice
 from customer, orders,book
 where customer.custid=orders.custid 
     and orders.bookid=book.bookid 
-    and customer.name like '¹ÚÁö¼º';
+    and customer.name like 'ë°•ì§€ì„±';
     
 /*ex1-7*/
 select bookname
@@ -55,4 +55,4 @@ where not exists (
         from customer,orders
         where customer.custid=orders.custid 
                 and orders.bookid=book.bookid 
-                and customer.name like '¹ÚÁö¼º');
+                and customer.name like 'ë°•ì§€ì„±');
