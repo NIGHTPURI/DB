@@ -1,0 +1,21 @@
+/*p.196 3장 4번문제*/
+/*1번*/
+INSERT INTO Book VALUES(11, '스포츠세계', '대한미디어', 10000);
+SELECT * FROM Book;
+/*2번*/
+DELETE FROM Book WHERE publisher='삼성당';
+/*3번 외래키 제약조건으로 인해 삭제 불가능*/
+(DELETE FROM Book WHERE publisher='이상미디어';)
+/*4번*/
+UPDATE Book SET publisher='대한출판사' WHERE publisher like '대한미디어';
+SELECT * FROM BOOK;
+/*5번*/
+create table Bookcompany(
+name varchar(20) Primary key,
+address varchar(20),
+begin DATE);
+/*6번*/
+ALTER TABLE Bookcompany ADD webaddress VARCHAR(30);
+/*7번*/
+INSERT INTO Bookcompany (name, address, begin, webaddress)
+VALUES ('한빛아카데미', '서울시 마포구', '1993-01-01', 'http://hanbit.co.kr');
