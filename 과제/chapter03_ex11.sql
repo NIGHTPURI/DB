@@ -1,5 +1,5 @@
 /*(1) ~ (4)*/
-/*±ØÀå Å×ÀÌºí »ı¼º*/
+/*ê·¹ì¥ í…Œì´ë¸” ìƒì„±*/
 create table theater(
     movienum NUMBER,
     theaname varchar2(20),
@@ -7,9 +7,9 @@ create table theater(
     PRIMARY KEY(movienum)
 );
 
-/*»ó¿µ°ü Å×ÀÌºí »ı¼º*/
-/*¿µÈ­ °¡°İÀº 20,000¿øÀ» ³ÑÁö ¾Ê¾Æ¾ß ÇÑ´Ù*/
-/*»ó¿µ°ü ¹øÈ£´Â 1ºÎÅÍ 10 »çÀÌÀÌ´Ù*/
+/*ìƒì˜ê´€ í…Œì´ë¸” ìƒì„±*/
+/*ì˜í™” ê°€ê²©ì€ 20,000ì›ì„ ë„˜ì§€ ì•Šì•„ì•¼ í•œë‹¤*/
+/*ìƒì˜ê´€ ë²ˆí˜¸ëŠ” 1ë¶€í„° 10 ì‚¬ì´ì´ë‹¤*/
 create table mtheater(
     movienum NUMBER,
     mtheanum NUMBER CHECK(1 <= mtheanum AND mtheanum <= 10),
@@ -19,7 +19,7 @@ create table mtheater(
     PRIMARY KEY(movienum, mtheanum)
 );
 
-/*°í°´ Å×ÀÌºí »ı¼º*/
+/*ê³ ê° í…Œì´ë¸” ìƒì„±*/
 create table theacust(
     custnum NUMBER,
     custname varchar2(20),
@@ -27,9 +27,9 @@ create table theacust(
     PRIMARY KEY(custnum)
 );
 
-/*¿¹¾à Å×ÀÌºí »ı¼º*/
-/*»ó¿µ°ü ¹øÈ£´Â 1ºÎÅÍ 10 »çÀÌÀÌ´Ù*/
-/*°°À½ »ç¶÷ÀÌ °°Àº ÁÂ¼®¹øÈ£¸¦ µÎ ¹ø ¿¹¾àÇÏÁö ¾Ê¾Æ¾ß ÇÑ´Ù.*/
+/*ì˜ˆì•½ í…Œì´ë¸” ìƒì„±*/
+/*ìƒì˜ê´€ ë²ˆí˜¸ëŠ” 1ë¶€í„° 10 ì‚¬ì´ì´ë‹¤*/
+/*ê°™ìŒ ì‚¬ëŒì´ ê°™ì€ ì¢Œì„ë²ˆí˜¸ë¥¼ ë‘ ë²ˆ ì˜ˆì•½í•˜ì§€ ì•Šì•„ì•¼ í•œë‹¤.*/
 create table reserv(
     movienum NUMBER,
     theanum NUMBER CHECK(1 <= theanum AND theanum <= 10),
@@ -39,24 +39,24 @@ create table reserv(
     PRIMARY KEY(movienum, theanum, custnum)
 );
 
-/*°ª ³Ö±â*/
-/*±ØÀå Å×ÀÌºí*/
+/*ê°’ ë„£ê¸°*/
+/*ê·¹ì¥ í…Œì´ë¸”*/
 insert into theater
-values (1, '·Ôµ¥', 'Àá½Ç');
+values (1, 'ë¡¯ë°', 'ì ì‹¤');
 insert into theater
-values (2, '¸Ş°¡', '°­³²');
+values (2, 'ë©”ê°€', 'ê°•ë‚¨');
 insert into theater
-values (3, '´ëÇÑ', 'Àá½Ç');
+values (3, 'ëŒ€í•œ', 'ì ì‹¤');
 
-/*»ó¿µ°ü Å×ÀÌºí*/
+/*ìƒì˜ê´€ í…Œì´ë¸”*/
 insert into mtheater
-values (1, 1, '¾î·Á¿î ¿µÈ­', 15000, 48);
+values (1, 1, 'ì–´ë ¤ìš´ ì˜í™”', 15000, 48);
 insert into mtheater
-values (3, 1, '¸ÚÁø ¿µÈ­', 7500, 120);
+values (3, 1, 'ë©‹ì§„ ì˜í™”', 7500, 120);
 insert into mtheater
-values (3, 2, 'Àç¹Õ´Â ¿µÈ­', 8000, 110);
+values (3, 2, 'ì¬ë°ŒëŠ” ì˜í™”', 8000, 110);
 
-/*¿¹¾à Å×ÀÌºí*/
+/*ì˜ˆì•½ í…Œì´ë¸”*/
 insert into reserv
 values (3, 2, 3, 15, '2020-09-01');
 insert into reserv
@@ -64,10 +64,10 @@ values (3, 1, 4, 16, '2020-09-01');
 insert into reserv
 values (1, 1, 9, 48, '2020-09-01');
 
-/*°í°´ Å×ÀÌºí*/
+/*ê³ ê° í…Œì´ë¸”*/
 insert into theacust
-values (3, 'È«±æµ¿', '°­³²');
+values (3, 'í™ê¸¸ë™', 'ê°•ë‚¨');
 insert into theacust
-values (4, '±èÃ¶¼ö', 'Àá½Ç');
+values (4, 'ê¹€ì² ìˆ˜', 'ì ì‹¤');
 insert into theacust
-values (5, '¹Ú¿µÈñ', '°­³²');
+values (5, 'ë°•ì˜í¬', 'ê°•ë‚¨');
